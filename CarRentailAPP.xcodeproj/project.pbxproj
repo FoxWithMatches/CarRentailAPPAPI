@@ -57,6 +57,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA53625C275B3EBB004CA427 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				EA37A661274E9D2500AE3E63 /* WelcomeStoryboard.storyboard */,
+				EF922EFF274EB316005B1595 /* PTSStoryboard.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		EA53625D275B3ECE004CA427 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EA53625A275B3A85004CA427 /* Car.swift */,
+				EF922EFD274EB2DB005B1595 /* Login + AboutUs.swift */,
+				EA37A665274EA66D00AE3E63 /* Model.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EA53625E275B3F04004CA427 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EA37A667274EA6F900AE3E63 /* WelcomeViewController.swift */,
+				EA37A669274EA71A00AE3E63 /* CarListViewController.swift */,
+				EA37A66B274EA73300AE3E63 /* DetailCarViewController.swift */,
+				EF922F01274EB330005B1595 /* ReserveViewController.swift */,
+				EF922F03274EB33C005B1595 /* GratitudeViewController.swift */,
+				EF922F05274EB349005B1595 /* AboutUsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		EA53625F275B3F94004CA427 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EA536258275B3A6E004CA427 /* CarCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EA536260275B3FB3004CA427 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				EF922EBD274E99A5005B1595 /* AppDelegate.swift */,
+				EF922EBF274E99A5005B1595 /* SceneDelegate.swift */,
+				EF922ECB274E99A7005B1595 /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		EA536261275B3FD3004CA427 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				EA37A663274EA65F00AE3E63 /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		EA536262275B3FF9004CA427 /* Sourse */ = {
+			isa = PBXGroup;
+			children = (
+				EF922EC6274E99A7005B1595 /* Assets.xcassets */,
+			);
+			path = Sourse;
+			sourceTree = "<group>";
+		};
 		EF922EB1274E99A5005B1595 = {
 			isa = PBXGroup;
 			children = (
@@ -76,23 +142,13 @@
 		EF922EBC274E99A5005B1595 /* CarRentailAPP */ = {
 			isa = PBXGroup;
 			children = (
-				EF922EBD274E99A5005B1595 /* AppDelegate.swift */,
-				EF922EBF274E99A5005B1595 /* SceneDelegate.swift */,
-				EA37A661274E9D2500AE3E63 /* WelcomeStoryboard.storyboard */,
-				EA536258275B3A6E004CA427 /* CarCell.swift */,
-				EA53625A275B3A85004CA427 /* Car.swift */,
-				EA37A663274EA65F00AE3E63 /* NetworkManager.swift */,
-				EA37A665274EA66D00AE3E63 /* Model.swift */,
-				EA37A667274EA6F900AE3E63 /* WelcomeViewController.swift */,
-				EA37A669274EA71A00AE3E63 /* CarListViewController.swift */,
-				EA37A66B274EA73300AE3E63 /* DetailCarViewController.swift */,
-				EF922EC6274E99A7005B1595 /* Assets.xcassets */,
-				EF922ECB274E99A7005B1595 /* Info.plist */,
-				EF922EFD274EB2DB005B1595 /* Login + AboutUs.swift */,
-				EF922EFF274EB316005B1595 /* PTSStoryboard.storyboard */,
-				EF922F01274EB330005B1595 /* ReserveViewController.swift */,
-				EF922F03274EB33C005B1595 /* GratitudeViewController.swift */,
-				EF922F05274EB349005B1595 /* AboutUsViewController.swift */,
+				EA53625C275B3EBB004CA427 /* Storyboards */,
+				EA53625D275B3ECE004CA427 /* Models */,
+				EA536261275B3FD3004CA427 /* Services */,
+				EA53625E275B3F04004CA427 /* ViewControllers */,
+				EA53625F275B3F94004CA427 /* Views */,
+				EA536262275B3FF9004CA427 /* Sourse */,
+				EA536260275B3FB3004CA427 /* SupportingFiles */,
 			);
 			path = CarRentailAPP;
 			sourceTree = "<group>";
@@ -310,9 +366,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 24LMK5CXTP;
+				DEVELOPMENT_TEAM = 2V3Q6RCHJL;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CarRentailAPP/Info.plist;
+				INFOPLIST_FILE = CarRentailAPP/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = WelcomeStoryboard;
@@ -340,7 +396,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 24LMK5CXTP;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CarRentailAPP/Info.plist;
+				INFOPLIST_FILE = CarRentailAPP/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = WelcomeStoryboard;
