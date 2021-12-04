@@ -23,9 +23,13 @@
 		EF922F02274EB330005B1595 /* ReserveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF922F01274EB330005B1595 /* ReserveViewController.swift */; };
 		EF922F04274EB33C005B1595 /* GratitudeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF922F03274EB33C005B1595 /* GratitudeViewController.swift */; };
 		EF922F06274EB349005B1595 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF922F05274EB349005B1595 /* AboutUsViewController.swift */; };
+		F1E641C3437F2EB37ECC3EC6 /* Pods_CarRentailAPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 798BD9F478A5591E48B21E5E /* Pods_CarRentailAPP.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		188EF1B65D6E72FD87D651DD /* Pods-CarRentailAPP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarRentailAPP.release.xcconfig"; path = "Target Support Files/Pods-CarRentailAPP/Pods-CarRentailAPP.release.xcconfig"; sourceTree = "<group>"; };
+		4D2693C980538240603495D1 /* Pods-CarRentailAPP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarRentailAPP.debug.xcconfig"; path = "Target Support Files/Pods-CarRentailAPP/Pods-CarRentailAPP.debug.xcconfig"; sourceTree = "<group>"; };
+		798BD9F478A5591E48B21E5E /* Pods_CarRentailAPP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CarRentailAPP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA37A661274E9D2500AE3E63 /* WelcomeStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WelcomeStoryboard.storyboard; sourceTree = "<group>"; };
 		EA37A663274EA65F00AE3E63 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		EA37A665274EA66D00AE3E63 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -51,12 +55,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1E641C3437F2EB37ECC3EC6 /* Pods_CarRentailAPP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A1B5971514833D12025C19DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				798BD9F478A5591E48B21E5E /* Pods_CarRentailAPP.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C0C63259EC8A74F7418F2710 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4D2693C980538240603495D1 /* Pods-CarRentailAPP.debug.xcconfig */,
+				188EF1B65D6E72FD87D651DD /* Pods-CarRentailAPP.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		EA53625C275B3EBB004CA427 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +151,8 @@
 			children = (
 				EF922EBC274E99A5005B1595 /* CarRentailAPP */,
 				EF922EBB274E99A5005B1595 /* Products */,
+				C0C63259EC8A74F7418F2710 /* Pods */,
+				A1B5971514833D12025C19DD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -160,9 +185,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EF922ECE274E99A7005B1595 /* Build configuration list for PBXNativeTarget "CarRentailAPP" */;
 			buildPhases = (
+				5E91D47354060B8AF902A874 /* [CP] Check Pods Manifest.lock */,
 				EF922EB6274E99A5005B1595 /* Sources */,
 				EF922EB7274E99A5005B1595 /* Frameworks */,
 				EF922EB8274E99A5005B1595 /* Resources */,
+				DC9DFDD07B171784CB72180E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -218,6 +245,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5E91D47354060B8AF902A874 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CarRentailAPP-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DC9DFDD07B171784CB72180E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CarRentailAPP/Pods-CarRentailAPP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CarRentailAPP/Pods-CarRentailAPP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CarRentailAPP/Pods-CarRentailAPP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EF922EB6274E99A5005B1595 /* Sources */ = {
@@ -361,6 +430,7 @@
 		};
 		EF922ECF274E99A7005B1595 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D2693C980538240603495D1 /* Pods-CarRentailAPP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -389,6 +459,7 @@
 		};
 		EF922ED0274E99A7005B1595 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 188EF1B65D6E72FD87D651DD /* Pods-CarRentailAPP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

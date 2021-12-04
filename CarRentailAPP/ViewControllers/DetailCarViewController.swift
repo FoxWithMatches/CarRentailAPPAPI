@@ -18,8 +18,8 @@ class DetailCarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let name = car.name else { return }
-        guard let horsePower = car.avg_horsepower else { return }
-        guard let price = car.avg_price else { return }
+        guard let horsePower = car.horsePower else { return }
+        guard let price = car.price else { return }
         carDescriptionLabel.text =
         """
             \(name.capitalized) \n
@@ -27,7 +27,7 @@ class DetailCarViewController: UIViewController {
             Цена: \(String(format: "%.2f", price)) $
         """
         DispatchQueue.global().async {
-            guard let stringURL = self.car.img_url else { return }
+            guard let stringURL = self.car.imgUrl else { return }
             guard let url = URL(string: stringURL) else { return }
             guard let imageData = try? Data(contentsOf: url) else { return }
             DispatchQueue.main.async {

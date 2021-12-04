@@ -16,7 +16,7 @@ class CarCell: UITableViewCell {
         carName.text = car.name
         
         DispatchQueue.global().async {
-            guard let stringURL = car.img_url else { return }
+            guard let stringURL = car.imgUrl else { return }
             guard let url = URL(string: stringURL) else { return }
             guard let imageData = try? Data(contentsOf: url) else { return }
             DispatchQueue.main.async {

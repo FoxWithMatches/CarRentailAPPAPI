@@ -32,8 +32,8 @@ class WelcomeViewController: UIViewController {
             
         }
         
-    private func fetchData(from url: String?) {
-                NetworkManager.shared.fetchCars(from: url) { result in
+    private func fetchData(from url: String) {
+                NetworkManager.shared.fetchCars(url) { result in
                     switch result {
                     case .success(let car):
                         self.cars = car
