@@ -63,18 +63,24 @@ class CarListViewController: UITableViewController {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             
             let car: Car
-            
             if isFiltering {
                 car = filterCars[indexPath.row]
             } else {
                 car = cars[indexPath.row]
             }
+            guard let detailVC = segue.destination as? DetailCarViewController else { return }
+            detailVC.car = car
         }
         
         private func fetchData(from url: String?) {
-            NetworkManager.shared.fetchCars(from: url) { car in
-                self.cars = car
-                self.tableView.reloadData()
+            NetworkManager.shared.fetchCars(from: url) { result in
+                switch result {
+                case .success(let car):
+                    self.cars = car
+                    self.tableView.reloadData()
+                case .failure(let error):
+                    print(error)
+                }
             }
         }
     }

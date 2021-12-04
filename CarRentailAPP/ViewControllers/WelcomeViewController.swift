@@ -32,9 +32,14 @@ class WelcomeViewController: UIViewController {
             
         }
         
-        private func fetchData(from url: String?) {
-            NetworkManager.shared.fetchCars(from: url) { car in
-                self.cars = car
-            }
+    private func fetchData(from url: String?) {
+                NetworkManager.shared.fetchCars(from: url) { result in
+                    switch result {
+                    case .success(let car):
+                        self.cars = car
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
         }
     }
