@@ -9,22 +9,32 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
 
+    private var cars: [Car] = []
     @IBOutlet var headerImage: UIImageView!
     @IBOutlet var textLabel: UILabel!
     
-    private var carsList = Car.getCarList()
-    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        headerImage.image = UIImage(named: "BMW X1")
-        textLabel.text =
-        """
-            Позвольте найти для вас идеальный автомобиль.\n
-            Подберем на любой вкус и кошелек, продолжительность проката от 1 часа до нескольких месяцев!\n
-            Бронируйте прямо в приложении
-        """
-    }
-    @IBAction func unwind(for Segue: UIStoryboardSegue) {
+            super.viewDidLoad()
+            headerImage.image = UIImage(named: "BMW X1")
+            textLabel.text =
+            """
+                Позвольте найти для вас идеальный автомобиль.\n
+                Подберем на любой вкус и кошелек, продолжительность проката от 1 часа до нескольких месяцев!\n
+                Бронируйте прямо в приложении
+            """
+        }
         
+        @IBAction func btn() {
+            fetchData(from: Link.carLink.rawValue)
+        }
+        
+        @IBAction func unwind(for Segue: UIStoryboardSegue) {
+            
+        }
+        
+        private func fetchData(from url: String?) {
+            NetworkManager.shared.fetchCars(from: url) { car in
+                self.cars = car
+            }
+        }
     }
-}

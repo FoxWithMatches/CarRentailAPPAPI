@@ -92,14 +92,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="rental" id="T7P-N4-Hbl">
-                                <rect key="frame" x="0.0" y="44.5" width="375" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="rental" id="T7P-N4-Hbl" customClass="CarCell" customModule="CarRentailAPP" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="375" height="52"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T7P-N4-Hbl" id="2hl-2q-FJX">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="i2T-8F-6ME">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cSt-bg-YRN">
+                                                    <rect key="frame" x="0.0" y="0.0" width="81.5" height="52"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="cSt-bg-YRN" secondAttribute="height" multiplier="69:44" id="x1C-Kv-42L"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0j-0c-fty">
+                                                    <rect key="frame" x="91.5" y="0.0" width="283.5" height="52"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="i2T-8F-6ME" secondAttribute="trailing" id="2XE-BG-b8M"/>
+                                        <constraint firstAttribute="bottom" secondItem="i2T-8F-6ME" secondAttribute="bottom" id="AUM-th-6hu"/>
+                                        <constraint firstItem="i2T-8F-6ME" firstAttribute="leading" secondItem="2hl-2q-FJX" secondAttribute="leading" id="YH9-Xw-XTP"/>
+                                        <constraint firstItem="i2T-8F-6ME" firstAttribute="top" secondItem="2hl-2q-FJX" secondAttribute="top" id="f3Q-QU-NWu"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="carImage" destination="cSt-bg-YRN" id="Wd2-pL-kNF"/>
+                                    <outlet property="carName" destination="c0j-0c-fty" id="3i9-Fk-345"/>
                                     <segue destination="2rH-1d-9UE" kind="show" identifier="rental" id="fx0-W7-5PM"/>
                                 </connections>
                             </tableViewCell>
@@ -113,7 +140,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5P-PM-Iz6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1748" y="80"/>
+            <point key="canvasLocation" x="1748" y="79.610194902548727"/>
         </scene>
         <!--Detail Car View Controller-->
         <scene sceneID="CqF-NS-Xgn">
