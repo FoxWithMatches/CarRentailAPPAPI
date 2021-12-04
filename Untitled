@@ -1,0 +1,1600 @@
+diff --git a/.DS_Store b/.DS_Store
+index b3814ae..fc0127a 100644
+Binary files a/.DS_Store and b/.DS_Store differ
+diff --git a/CarRentailAPP.xcodeproj/project.pbxproj b/CarRentailAPP.xcodeproj/project.pbxproj
+index 2df0c8f..1dfed18 100644
+--- a/CarRentailAPP.xcodeproj/project.pbxproj
++++ b/CarRentailAPP.xcodeproj/project.pbxproj
+@@ -8,11 +8,13 @@
+ 
+ /* Begin PBXBuildFile section */
+ 		EA37A662274E9D2500AE3E63 /* WelcomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA37A661274E9D2500AE3E63 /* WelcomeStoryboard.storyboard */; };
+-		EA37A664274EA65F00AE3E63 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA37A663274EA65F00AE3E63 /* DataManager.swift */; };
++		EA37A664274EA65F00AE3E63 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA37A663274EA65F00AE3E63 /* NetworkManager.swift */; };
+ 		EA37A666274EA66D00AE3E63 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA37A665274EA66D00AE3E63 /* Model.swift */; };
+ 		EA37A668274EA6F900AE3E63 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA37A667274EA6F900AE3E63 /* WelcomeViewController.swift */; };
+ 		EA37A66A274EA71A00AE3E63 /* CarListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA37A669274EA71A00AE3E63 /* CarListViewController.swift */; };
+ 		EA37A66C274EA73300AE3E63 /* DetailCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA37A66B274EA73300AE3E63 /* DetailCarViewController.swift */; };
++		EA536253275AA883004CA427 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA536252275AA882004CA427 /* Car.swift */; };
++		EA536257275AB0E1004CA427 /* CarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA536256275AB0E1004CA427 /* CarCell.swift */; };
+ 		EF922EBE274E99A5005B1595 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF922EBD274E99A5005B1595 /* AppDelegate.swift */; };
+ 		EF922EC0274E99A5005B1595 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF922EBF274E99A5005B1595 /* SceneDelegate.swift */; };
+ 		EF922EC7274E99A7005B1595 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF922EC6274E99A7005B1595 /* Assets.xcassets */; };
+@@ -25,11 +27,13 @@
+ 
+ /* Begin PBXFileReference section */
+ 		EA37A661274E9D2500AE3E63 /* WelcomeStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WelcomeStoryboard.storyboard; sourceTree = "<group>"; };
+-		EA37A663274EA65F00AE3E63 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
++		EA37A663274EA65F00AE3E63 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+ 		EA37A665274EA66D00AE3E63 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+ 		EA37A667274EA6F900AE3E63 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+ 		EA37A669274EA71A00AE3E63 /* CarListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListViewController.swift; sourceTree = "<group>"; };
+ 		EA37A66B274EA73300AE3E63 /* DetailCarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCarViewController.swift; sourceTree = "<group>"; };
++		EA536252275AA882004CA427 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
++		EA536256275AB0E1004CA427 /* CarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCell.swift; sourceTree = "<group>"; };
+ 		EF922EBA274E99A5005B1595 /* CarRentailAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarRentailAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+ 		EF922EBD274E99A5005B1595 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+ 		EF922EBF274E99A5005B1595 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+@@ -53,6 +57,56 @@
+ /* End PBXFrameworksBuildPhase section */
+ 
+ /* Begin PBXGroup section */
++		EAC8E547275AA33D004808BA /* Storyboards */ = {
++			isa = PBXGroup;
++			children = (
++				EA37A661274E9D2500AE3E63 /* WelcomeStoryboard.storyboard */,
++				EF922EFF274EB316005B1595 /* PTSStoryboard.storyboard */,
++			);
++			path = Storyboards;
++			sourceTree = "<group>";
++		};
++		EAC8E548275AA34C004808BA /* ViewControllers */ = {
++			isa = PBXGroup;
++			children = (
++				EA37A667274EA6F900AE3E63 /* WelcomeViewController.swift */,
++				EA37A669274EA71A00AE3E63 /* CarListViewController.swift */,
++				EA37A66B274EA73300AE3E63 /* DetailCarViewController.swift */,
++				EF922F01274EB330005B1595 /* ReserveViewController.swift */,
++				EF922F03274EB33C005B1595 /* GratitudeViewController.swift */,
++				EF922F05274EB349005B1595 /* AboutUsViewController.swift */,
++			);
++			path = ViewControllers;
++			sourceTree = "<group>";
++		};
++		EAC8E549275AA365004808BA /* Models */ = {
++			isa = PBXGroup;
++			children = (
++				EA37A665274EA66D00AE3E63 /* Model.swift */,
++				EF922EFD274EB2DB005B1595 /* Login + AboutUs.swift */,
++				EA536252275AA882004CA427 /* Car.swift */,
++				EA536256275AB0E1004CA427 /* CarCell.swift */,
++			);
++			path = Models;
++			sourceTree = "<group>";
++		};
++		EAC8E54A275AA36F004808BA /* Services */ = {
++			isa = PBXGroup;
++			children = (
++				EA37A663274EA65F00AE3E63 /* NetworkManager.swift */,
++			);
++			path = Services;
++			sourceTree = "<group>";
++		};
++		EAC8E54B275AA387004808BA /* Supports */ = {
++			isa = PBXGroup;
++			children = (
++				EF922EBD274E99A5005B1595 /* AppDelegate.swift */,
++				EF922EBF274E99A5005B1595 /* SceneDelegate.swift */,
++			);
++			path = Supports;
++			sourceTree = "<group>";
++		};
+ 		EF922EB1274E99A5005B1595 = {
+ 			isa = PBXGroup;
+ 			children = (
+@@ -72,21 +126,13 @@
+ 		EF922EBC274E99A5005B1595 /* CarRentailAPP */ = {
+ 			isa = PBXGroup;
+ 			children = (
+-				EF922EBD274E99A5005B1595 /* AppDelegate.swift */,
+-				EF922EBF274E99A5005B1595 /* SceneDelegate.swift */,
+-				EA37A661274E9D2500AE3E63 /* WelcomeStoryboard.storyboard */,
+-				EA37A663274EA65F00AE3E63 /* DataManager.swift */,
+-				EA37A665274EA66D00AE3E63 /* Model.swift */,
+-				EA37A667274EA6F900AE3E63 /* WelcomeViewController.swift */,
+-				EA37A669274EA71A00AE3E63 /* CarListViewController.swift */,
+-				EA37A66B274EA73300AE3E63 /* DetailCarViewController.swift */,
++				EAC8E54B275AA387004808BA /* Supports */,
++				EAC8E547275AA33D004808BA /* Storyboards */,
++				EAC8E54A275AA36F004808BA /* Services */,
++				EAC8E549275AA365004808BA /* Models */,
++				EAC8E548275AA34C004808BA /* ViewControllers */,
+ 				EF922EC6274E99A7005B1595 /* Assets.xcassets */,
+ 				EF922ECB274E99A7005B1595 /* Info.plist */,
+-				EF922EFD274EB2DB005B1595 /* Login + AboutUs.swift */,
+-				EF922EFF274EB316005B1595 /* PTSStoryboard.storyboard */,
+-				EF922F01274EB330005B1595 /* ReserveViewController.swift */,
+-				EF922F03274EB33C005B1595 /* GratitudeViewController.swift */,
+-				EF922F05274EB349005B1595 /* AboutUsViewController.swift */,
+ 			);
+ 			path = CarRentailAPP;
+ 			sourceTree = "<group>";
+@@ -162,11 +208,13 @@
+ 			isa = PBXSourcesBuildPhase;
+ 			buildActionMask = 2147483647;
+ 			files = (
++				EA536257275AB0E1004CA427 /* CarCell.swift in Sources */,
+ 				EF922EBE274E99A5005B1595 /* AppDelegate.swift in Sources */,
+ 				EA37A66A274EA71A00AE3E63 /* CarListViewController.swift in Sources */,
++				EA536253275AA883004CA427 /* Car.swift in Sources */,
+ 				EA37A668274EA6F900AE3E63 /* WelcomeViewController.swift in Sources */,
+ 				EA37A66C274EA73300AE3E63 /* DetailCarViewController.swift in Sources */,
+-				EA37A664274EA65F00AE3E63 /* DataManager.swift in Sources */,
++				EA37A664274EA65F00AE3E63 /* NetworkManager.swift in Sources */,
+ 				EF922F02274EB330005B1595 /* ReserveViewController.swift in Sources */,
+ 				EF922EFE274EB2DB005B1595 /* Login + AboutUs.swift in Sources */,
+ 				EF922EC0274E99A5005B1595 /* SceneDelegate.swift in Sources */,
+diff --git a/CarRentailAPP.xcodeproj/project.xcworkspace/xcuserdata/alisats.xcuserdatad/UserInterfaceState.xcuserstate b/CarRentailAPP.xcodeproj/project.xcworkspace/xcuserdata/alisats.xcuserdatad/UserInterfaceState.xcuserstate
+index 3611491..0b0bdc3 100644
+Binary files a/CarRentailAPP.xcodeproj/project.xcworkspace/xcuserdata/alisats.xcuserdatad/UserInterfaceState.xcuserstate and b/CarRentailAPP.xcodeproj/project.xcworkspace/xcuserdata/alisats.xcuserdatad/UserInterfaceState.xcuserstate differ
+diff --git a/CarRentailAPP/.DS_Store b/CarRentailAPP/.DS_Store
+index 315f85c..04f270b 100644
+Binary files a/CarRentailAPP/.DS_Store and b/CarRentailAPP/.DS_Store differ
+diff --git a/CarRentailAPP/Assets.xcassets/Chevrolet Aveo.imageset/Chevrolet Aveo.jpeg b/CarRentailAPP/Assets.xcassets/Chevrolet Aveo.imageset/Chevrolet Aveo.jpeg
+deleted file mode 100644
+index af9ef94..0000000
+Binary files a/CarRentailAPP/Assets.xcassets/Chevrolet Aveo.imageset/Chevrolet Aveo.jpeg and /dev/null differ
+diff --git a/CarRentailAPP/Assets.xcassets/Chevrolet Aveo.imageset/Contents.json b/CarRentailAPP/Assets.xcassets/Chevrolet Aveo.imageset/Contents.json
+deleted file mode 100644
+index d97b22b..0000000
+--- a/CarRentailAPP/Assets.xcassets/Chevrolet Aveo.imageset/Contents.json	
++++ /dev/null
+@@ -1,21 +0,0 @@
+-{
+-  "images" : [
+-    {
+-      "filename" : "Chevrolet Aveo.jpeg",
+-      "idiom" : "universal",
+-      "scale" : "1x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "2x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "3x"
+-    }
+-  ],
+-  "info" : {
+-    "author" : "xcode",
+-    "version" : 1
+-  }
+-}
+diff --git a/CarRentailAPP/Assets.xcassets/Daewoo Matiz.imageset/Contents.json b/CarRentailAPP/Assets.xcassets/Daewoo Matiz.imageset/Contents.json
+deleted file mode 100644
+index 67b580c..0000000
+--- a/CarRentailAPP/Assets.xcassets/Daewoo Matiz.imageset/Contents.json	
++++ /dev/null
+@@ -1,21 +0,0 @@
+-{
+-  "images" : [
+-    {
+-      "filename" : "Daewoo Matiz.jpeg",
+-      "idiom" : "universal",
+-      "scale" : "1x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "2x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "3x"
+-    }
+-  ],
+-  "info" : {
+-    "author" : "xcode",
+-    "version" : 1
+-  }
+-}
+diff --git a/CarRentailAPP/Assets.xcassets/Daewoo Matiz.imageset/Daewoo Matiz.jpeg b/CarRentailAPP/Assets.xcassets/Daewoo Matiz.imageset/Daewoo Matiz.jpeg
+deleted file mode 100644
+index 523d830..0000000
+Binary files a/CarRentailAPP/Assets.xcassets/Daewoo Matiz.imageset/Daewoo Matiz.jpeg and /dev/null differ
+diff --git a/CarRentailAPP/Assets.xcassets/Ford Mondeo.imageset/Contents.json b/CarRentailAPP/Assets.xcassets/Ford Mondeo.imageset/Contents.json
+deleted file mode 100644
+index f63129d..0000000
+--- a/CarRentailAPP/Assets.xcassets/Ford Mondeo.imageset/Contents.json	
++++ /dev/null
+@@ -1,21 +0,0 @@
+-{
+-  "images" : [
+-    {
+-      "filename" : "Ford Mondeo.jpeg",
+-      "idiom" : "universal",
+-      "scale" : "1x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "2x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "3x"
+-    }
+-  ],
+-  "info" : {
+-    "author" : "xcode",
+-    "version" : 1
+-  }
+-}
+diff --git a/CarRentailAPP/Assets.xcassets/Ford Mondeo.imageset/Ford Mondeo.jpeg b/CarRentailAPP/Assets.xcassets/Ford Mondeo.imageset/Ford Mondeo.jpeg
+deleted file mode 100644
+index 37cd794..0000000
+Binary files a/CarRentailAPP/Assets.xcassets/Ford Mondeo.imageset/Ford Mondeo.jpeg and /dev/null differ
+diff --git a/CarRentailAPP/Assets.xcassets/Honda Accord.imageset/Contents.json b/CarRentailAPP/Assets.xcassets/Honda Accord.imageset/Contents.json
+deleted file mode 100644
+index 041a767..0000000
+--- a/CarRentailAPP/Assets.xcassets/Honda Accord.imageset/Contents.json	
++++ /dev/null
+@@ -1,21 +0,0 @@
+-{
+-  "images" : [
+-    {
+-      "filename" : "Honda Accord.jpeg",
+-      "idiom" : "universal",
+-      "scale" : "1x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "2x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "3x"
+-    }
+-  ],
+-  "info" : {
+-    "author" : "xcode",
+-    "version" : 1
+-  }
+-}
+diff --git a/CarRentailAPP/Assets.xcassets/Honda Accord.imageset/Honda Accord.jpeg b/CarRentailAPP/Assets.xcassets/Honda Accord.imageset/Honda Accord.jpeg
+deleted file mode 100644
+index dbbb4d4..0000000
+Binary files a/CarRentailAPP/Assets.xcassets/Honda Accord.imageset/Honda Accord.jpeg and /dev/null differ
+diff --git a/CarRentailAPP/Assets.xcassets/Hyundai Creta.imageset/Contents.json b/CarRentailAPP/Assets.xcassets/Hyundai Creta.imageset/Contents.json
+deleted file mode 100644
+index 42dcd39..0000000
+--- a/CarRentailAPP/Assets.xcassets/Hyundai Creta.imageset/Contents.json	
++++ /dev/null
+@@ -1,21 +0,0 @@
+-{
+-  "images" : [
+-    {
+-      "filename" : "Hyundai Creta.jpeg",
+-      "idiom" : "universal",
+-      "scale" : "1x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "2x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "3x"
+-    }
+-  ],
+-  "info" : {
+-    "author" : "xcode",
+-    "version" : 1
+-  }
+-}
+diff --git a/CarRentailAPP/Assets.xcassets/Hyundai Creta.imageset/Hyundai Creta.jpeg b/CarRentailAPP/Assets.xcassets/Hyundai Creta.imageset/Hyundai Creta.jpeg
+deleted file mode 100644
+index a3bc5fe..0000000
+Binary files a/CarRentailAPP/Assets.xcassets/Hyundai Creta.imageset/Hyundai Creta.jpeg and /dev/null differ
+diff --git a/CarRentailAPP/Assets.xcassets/Hyundai Elantra.imageset/Contents.json b/CarRentailAPP/Assets.xcassets/Hyundai Elantra.imageset/Contents.json
+deleted file mode 100644
+index 5493017..0000000
+--- a/CarRentailAPP/Assets.xcassets/Hyundai Elantra.imageset/Contents.json	
++++ /dev/null
+@@ -1,21 +0,0 @@
+-{
+-  "images" : [
+-    {
+-      "filename" : "Hyundai Elantra.jpeg",
+-      "idiom" : "universal",
+-      "scale" : "1x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "2x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "3x"
+-    }
+-  ],
+-  "info" : {
+-    "author" : "xcode",
+-    "version" : 1
+-  }
+-}
+diff --git a/CarRentailAPP/Assets.xcassets/Hyundai Elantra.imageset/Hyundai Elantra.jpeg b/CarRentailAPP/Assets.xcassets/Hyundai Elantra.imageset/Hyundai Elantra.jpeg
+deleted file mode 100644
+index a078f1f..0000000
+Binary files a/CarRentailAPP/Assets.xcassets/Hyundai Elantra.imageset/Hyundai Elantra.jpeg and /dev/null differ
+diff --git a/CarRentailAPP/Assets.xcassets/Hyundai Getz.imageset/Contents.json b/CarRentailAPP/Assets.xcassets/Hyundai Getz.imageset/Contents.json
+deleted file mode 100644
+index f3f693b..0000000
+--- a/CarRentailAPP/Assets.xcassets/Hyundai Getz.imageset/Contents.json	
++++ /dev/null
+@@ -1,21 +0,0 @@
+-{
+-  "images" : [
+-    {
+-      "filename" : "Hyundai Gets.jpeg",
+-      "idiom" : "universal",
+-      "scale" : "1x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "2x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "3x"
+-    }
+-  ],
+-  "info" : {
+-    "author" : "xcode",
+-    "version" : 1
+-  }
+-}
+diff --git a/CarRentailAPP/Assets.xcassets/Hyundai Getz.imageset/Hyundai Gets.jpeg b/CarRentailAPP/Assets.xcassets/Hyundai Getz.imageset/Hyundai Gets.jpeg
+deleted file mode 100644
+index 69e53b3..0000000
+Binary files a/CarRentailAPP/Assets.xcassets/Hyundai Getz.imageset/Hyundai Gets.jpeg and /dev/null differ
+diff --git a/CarRentailAPP/Assets.xcassets/Hyundai Solaris.imageset/Contents.json b/CarRentailAPP/Assets.xcassets/Hyundai Solaris.imageset/Contents.json
+deleted file mode 100644
+index 40ac1ed..0000000
+--- a/CarRentailAPP/Assets.xcassets/Hyundai Solaris.imageset/Contents.json	
++++ /dev/null
+@@ -1,21 +0,0 @@
+-{
+-  "images" : [
+-    {
+-      "filename" : "Hyundai Solaris.jpeg",
+-      "idiom" : "universal",
+-      "scale" : "1x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "2x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "3x"
+-    }
+-  ],
+-  "info" : {
+-    "author" : "xcode",
+-    "version" : 1
+-  }
+-}
+diff --git a/CarRentailAPP/Assets.xcassets/Hyundai Solaris.imageset/Hyundai Solaris.jpeg b/CarRentailAPP/Assets.xcassets/Hyundai Solaris.imageset/Hyundai Solaris.jpeg
+deleted file mode 100644
+index b8d1f3f..0000000
+Binary files a/CarRentailAPP/Assets.xcassets/Hyundai Solaris.imageset/Hyundai Solaris.jpeg and /dev/null differ
+diff --git a/CarRentailAPP/Assets.xcassets/Hyundai Sonata.imageset/Contents.json b/CarRentailAPP/Assets.xcassets/Hyundai Sonata.imageset/Contents.json
+deleted file mode 100644
+index 007c948..0000000
+--- a/CarRentailAPP/Assets.xcassets/Hyundai Sonata.imageset/Contents.json	
++++ /dev/null
+@@ -1,21 +0,0 @@
+-{
+-  "images" : [
+-    {
+-      "filename" : "Hyundai Sonata.jpeg",
+-      "idiom" : "universal",
+-      "scale" : "1x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "2x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "3x"
+-    }
+-  ],
+-  "info" : {
+-    "author" : "xcode",
+-    "version" : 1
+-  }
+-}
+diff --git a/CarRentailAPP/Assets.xcassets/Hyundai Sonata.imageset/Hyundai Sonata.jpeg b/CarRentailAPP/Assets.xcassets/Hyundai Sonata.imageset/Hyundai Sonata.jpeg
+deleted file mode 100644
+index 7bcf02e..0000000
+Binary files a/CarRentailAPP/Assets.xcassets/Hyundai Sonata.imageset/Hyundai Sonata.jpeg and /dev/null differ
+diff --git a/CarRentailAPP/Assets.xcassets/Kia Ceed.imageset/Contents.json b/CarRentailAPP/Assets.xcassets/Kia Ceed.imageset/Contents.json
+deleted file mode 100644
+index eb93c2e..0000000
+--- a/CarRentailAPP/Assets.xcassets/Kia Ceed.imageset/Contents.json	
++++ /dev/null
+@@ -1,21 +0,0 @@
+-{
+-  "images" : [
+-    {
+-      "filename" : "Kia Ceed.jpeg",
+-      "idiom" : "universal",
+-      "scale" : "1x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "2x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "3x"
+-    }
+-  ],
+-  "info" : {
+-    "author" : "xcode",
+-    "version" : 1
+-  }
+-}
+diff --git a/CarRentailAPP/Assets.xcassets/Kia Ceed.imageset/Kia Ceed.jpeg b/CarRentailAPP/Assets.xcassets/Kia Ceed.imageset/Kia Ceed.jpeg
+deleted file mode 100644
+index cae61cf..0000000
+Binary files a/CarRentailAPP/Assets.xcassets/Kia Ceed.imageset/Kia Ceed.jpeg and /dev/null differ
+diff --git a/CarRentailAPP/Assets.xcassets/Kia Cerato.imageset/Contents.json b/CarRentailAPP/Assets.xcassets/Kia Cerato.imageset/Contents.json
+deleted file mode 100644
+index dcaefe1..0000000
+--- a/CarRentailAPP/Assets.xcassets/Kia Cerato.imageset/Contents.json	
++++ /dev/null
+@@ -1,21 +0,0 @@
+-{
+-  "images" : [
+-    {
+-      "filename" : "Kia Cerato.jpeg",
+-      "idiom" : "universal",
+-      "scale" : "1x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "2x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "3x"
+-    }
+-  ],
+-  "info" : {
+-    "author" : "xcode",
+-    "version" : 1
+-  }
+-}
+diff --git a/CarRentailAPP/Assets.xcassets/Kia Cerato.imageset/Kia Cerato.jpeg b/CarRentailAPP/Assets.xcassets/Kia Cerato.imageset/Kia Cerato.jpeg
+deleted file mode 100644
+index a19ff1a..0000000
+Binary files a/CarRentailAPP/Assets.xcassets/Kia Cerato.imageset/Kia Cerato.jpeg and /dev/null differ
+diff --git a/CarRentailAPP/Assets.xcassets/Kia Rio.imageset/Contents.json b/CarRentailAPP/Assets.xcassets/Kia Rio.imageset/Contents.json
+deleted file mode 100644
+index a024b5a..0000000
+--- a/CarRentailAPP/Assets.xcassets/Kia Rio.imageset/Contents.json	
++++ /dev/null
+@@ -1,21 +0,0 @@
+-{
+-  "images" : [
+-    {
+-      "filename" : "Kia Rio.jpeg",
+-      "idiom" : "universal",
+-      "scale" : "1x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "2x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "3x"
+-    }
+-  ],
+-  "info" : {
+-    "author" : "xcode",
+-    "version" : 1
+-  }
+-}
+diff --git a/CarRentailAPP/Assets.xcassets/Kia Rio.imageset/Kia Rio.jpeg b/CarRentailAPP/Assets.xcassets/Kia Rio.imageset/Kia Rio.jpeg
+deleted file mode 100644
+index fc6d4e0..0000000
+Binary files a/CarRentailAPP/Assets.xcassets/Kia Rio.imageset/Kia Rio.jpeg and /dev/null differ
+diff --git a/CarRentailAPP/Assets.xcassets/Kia Sorento.imageset/Contents.json b/CarRentailAPP/Assets.xcassets/Kia Sorento.imageset/Contents.json
+deleted file mode 100644
+index e68c48c..0000000
+--- a/CarRentailAPP/Assets.xcassets/Kia Sorento.imageset/Contents.json	
++++ /dev/null
+@@ -1,21 +0,0 @@
+-{
+-  "images" : [
+-    {
+-      "filename" : "Kia Sorento.jpeg",
+-      "idiom" : "universal",
+-      "scale" : "1x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "2x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "3x"
+-    }
+-  ],
+-  "info" : {
+-    "author" : "xcode",
+-    "version" : 1
+-  }
+-}
+diff --git a/CarRentailAPP/Assets.xcassets/Kia Sorento.imageset/Kia Sorento.jpeg b/CarRentailAPP/Assets.xcassets/Kia Sorento.imageset/Kia Sorento.jpeg
+deleted file mode 100644
+index 33a6d37..0000000
+Binary files a/CarRentailAPP/Assets.xcassets/Kia Sorento.imageset/Kia Sorento.jpeg and /dev/null differ
+diff --git a/CarRentailAPP/Assets.xcassets/Toyota Camry.imageset/Contents.json b/CarRentailAPP/Assets.xcassets/Toyota Camry.imageset/Contents.json
+deleted file mode 100644
+index 80c0e51..0000000
+--- a/CarRentailAPP/Assets.xcassets/Toyota Camry.imageset/Contents.json	
++++ /dev/null
+@@ -1,21 +0,0 @@
+-{
+-  "images" : [
+-    {
+-      "filename" : "Toyota Camry.jpeg",
+-      "idiom" : "universal",
+-      "scale" : "1x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "2x"
+-    },
+-    {
+-      "idiom" : "universal",
+-      "scale" : "3x"
+-    }
+-  ],
+-  "info" : {
+-    "author" : "xcode",
+-    "version" : 1
+-  }
+-}
+diff --git a/CarRentailAPP/Assets.xcassets/Toyota Camry.imageset/Toyota Camry.jpeg b/CarRentailAPP/Assets.xcassets/Toyota Camry.imageset/Toyota Camry.jpeg
+deleted file mode 100644
+index f9f389d..0000000
+Binary files a/CarRentailAPP/Assets.xcassets/Toyota Camry.imageset/Toyota Camry.jpeg and /dev/null differ
+diff --git a/CarRentailAPP/DataManager.swift b/CarRentailAPP/DataManager.swift
+deleted file mode 100644
+index 19de3c0..0000000
+--- a/CarRentailAPP/DataManager.swift
++++ /dev/null
+@@ -1,35 +0,0 @@
+-//
+-//  DataManager.swift
+-//  CarRentailAPP
+-//
+-//  Created by Alisa Ts on 24.11.2021.
+-//
+-
+-
+-class DataManager {
+-    static let shared = DataManager()
+-    
+-    let cars = ["Daewoo Matiz", "Hyundai Getz", "Kia Rio", "Hyundai Solaris",
+-                "Chevrolet Aveo", "Hyundai Elantra", "Kia Ceed", "Kia Cerato",
+-                "Ford Mondeo", "Honda Accord", "Hyundai Sonata", "Toyota Camry",
+-                "Hyundai Creta", "BMW X1", "Kia Sorento"]
+-    
+-    let prices = ["2000", "2500","5000","5000","5000","7000","7000",
+-                 "7000","8500","8500","8500","12000","15000","15000","15000"]
+-    
+-    let horsesPower = ["52", "97","123","123","115","132","129",
+-                      "130","140","190","150","249","149","184","180"]
+-    
+-    let driveUnits = ["передний", "передний", "передний", "передний", "передний",
+-                     "передний", "передний", "передний", "передний", "передний",
+-                     "передний", "передний", "передний", "полный", "полный"]
+-    
+-    let transmissions = ["механическая", "механическая", "автомат", "автомат",
+-                        "автомат", "автомат", "автомат", "механическая", "автомат",
+-                        "автомат", "автомат", "автомат", "автомат", "автомат", "автомат"]
+-    
+-    let engines = ["0.8", "1.4","1.6","1.6","1.6","1.6","1.6",
+-                  "1.6","2.0","2.4","2.0","3.5","2.0","2.0","2.5"]
+-    
+-    private init() {}
+-}
+diff --git a/CarRentailAPP/DetailCarViewController.swift b/CarRentailAPP/DetailCarViewController.swift
+deleted file mode 100644
+index 5a48f88..0000000
+--- a/CarRentailAPP/DetailCarViewController.swift
++++ /dev/null
+@@ -1,38 +0,0 @@
+-//
+-//  DetailCarViewController.swift
+-//  CarRentailAPP
+-//
+-//  Created by Alisa Ts on 24.11.2021.
+-//
+-
+-import UIKit
+-
+-class DetailCarViewController: UIViewController {
+-
+-    @IBOutlet var imageCar: UIImageView!
+-    @IBOutlet var carDescriptionLabel: UILabel!
+-    
+-    
+-    var car: Car!
+-    
+-    override func viewDidLoad() {
+-        super.viewDidLoad()
+-        imageCar.image = UIImage(named: car.image)
+-        carDescriptionLabel.text =
+-        """
+-            \(car.carNames) \n
+-            Данный автомобиль имеет \(car.driveUnits) привод.
+-            \(car.horsesPower) лошадиных сил.
+-            Двигатель \(car.engine) л.
+-            Коробка передач \(car.transmission) \n
+-            Цена: \(car.price) в сутки
+-        """
+-    }
+-    
+-    // MARK: - Navigation
+-
+-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+-        guard let reserveVC = segue.destination as? ReserveViewController else { return }
+-        reserveVC.car = car
+-    }
+-}
+diff --git a/CarRentailAPP/GratitudeViewController.swift b/CarRentailAPP/GratitudeViewController.swift
+deleted file mode 100644
+index 99d185e..0000000
+--- a/CarRentailAPP/GratitudeViewController.swift
++++ /dev/null
+@@ -1,35 +0,0 @@
+-//
+-//  GratitudeViewController.swift
+-//  CarRentailAPP
+-//
+-//  Created by Pavel Tsyganov on 24.11.2021.
+-//
+-
+-import UIKit
+-
+-class GratitudeViewController: UIViewController {
+-    
+-    @IBOutlet var nameLabel: UILabel!
+-    @IBOutlet var dateFromLabel: UILabel!
+-    @IBOutlet var dateBeforeLabel: UILabel!
+-    @IBOutlet var gratitudeTF: UILabel!
+-    @IBOutlet var backgroundImage: UIImageView!
+-    
+-    var login: Login!
+-    var car: Car!
+-    
+-    override func viewDidLoad() {
+-        super.viewDidLoad()
+-        backgroundImage.image = UIImage(named: "BMW X1")
+-        backgroundImage.alpha = 0.3
+-        nameLabel.text = "\(login.fullname), спасибо, что выбрали нашу компанию!"
+-        dateFromLabel.text = "Бронь с \(login.dateFrom) - "
+-        dateBeforeLabel.text = "по \(login.dateBefore)!"
+-        gratitudeTF.text = String(car.carNames)
+-    }
+-
+-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+-        guard let aboutUsVC = segue.destination as? AboutUsViewController else { return }
+-        aboutUsVC.login = login
+-    }
+-}
+diff --git a/CarRentailAPP/Info.plist b/CarRentailAPP/Info.plist
+index 2f0009d..bfefb0a 100644
+--- a/CarRentailAPP/Info.plist
++++ b/CarRentailAPP/Info.plist
+@@ -2,6 +2,11 @@
+ <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+ <plist version="1.0">
+ <dict>
++	<key>NSAppTransportSecurity</key>
++	<dict>
++		<key>NSAllowsArbitraryLoads</key>
++		<true/>
++	</dict>
+ 	<key>UIApplicationSceneManifest</key>
+ 	<dict>
+ 		<key>UIApplicationSupportsMultipleScenes</key>
+diff --git a/CarRentailAPP/Model.swift b/CarRentailAPP/Model.swift
+deleted file mode 100644
+index dd00dce..0000000
+--- a/CarRentailAPP/Model.swift
++++ /dev/null
+@@ -1,43 +0,0 @@
+-//
+-//  Model.swift
+-//  CarRentailAPP
+-//
+-//  Created by Alisa Ts on 24.11.2021.
+-//
+-
+-struct Car {
+-    let carNames: String
+-    let price: String
+-    let horsesPower: String
+-    let driveUnits: String
+-    let transmission: String
+-    let engine: String
+-    
+-    var image: String {
+-        "\(carNames)"
+-    }
+-}
+-
+-extension Car {
+-    static func getCarList() -> [Car] {
+-        var cars: [Car] = []
+-        
+-        let carNames = DataManager.shared.cars
+-        let prices = DataManager.shared.prices
+-        let horsesPowers = DataManager.shared.horsesPower
+-        let drivesUnits = DataManager.shared.driveUnits
+-        let transmissions = DataManager.shared.transmissions
+-        let engines = DataManager.shared.engines
+-        
+-        for index in 0...14 {
+-            let car = Car(carNames: carNames[index],
+-                          price: prices[index],
+-                          horsesPower: horsesPowers[index],
+-                          driveUnits: drivesUnits[index],
+-                          transmission: transmissions[index],
+-                          engine: engines[index])
+-            cars.append(car)
+-        }
+-        return cars
+-    }
+-}
+diff --git a/CarRentailAPP/Models/Car.swift b/CarRentailAPP/Models/Car.swift
+new file mode 100644
+index 0000000..c713606
+--- /dev/null
++++ b/CarRentailAPP/Models/Car.swift
+@@ -0,0 +1,17 @@
++//
++//  Car.swift
++//  CarRentailAPP
++//
++//  Created by Alisa Ts on 03.12.2021.
++//
++
++struct Car: Decodable {
++    let name: String?
++    let avg_horsepower: Double?
++    let avg_price: Double?
++    let img_url: String?
++}
++
++enum Link: String {
++    case carLink = "https://private-anon-3debd1bd9d-carsapi1.apiary-mock.com/manufacturers"
++}
+diff --git a/CarRentailAPP/Models/CarCell.swift b/CarRentailAPP/Models/CarCell.swift
+new file mode 100644
+index 0000000..07c3987
+--- /dev/null
++++ b/CarRentailAPP/Models/CarCell.swift
+@@ -0,0 +1,27 @@
++//
++//  CarCell.swift
++//  CarRentailAPP
++//
++//  Created by Alisa Ts on 03.12.2021.
++//
++
++import UIKit
++
++class CarCell: UITableViewCell {
++
++    @IBOutlet var carImage: UIImageView!
++    @IBOutlet var carName: UILabel!
++    
++    func configure(with car: Car) {
++        carName.text = car.name
++        
++        DispatchQueue.global().async {
++            guard let stringURL = car.img_url else { return }
++            guard let url = URL(string: stringURL) else { return }
++            guard let imageData = try? Data(contentsOf: url) else { return }
++            DispatchQueue.main.async {
++                self.carImage.image = UIImage(data: imageData)
++            }
++        }
++    }
++}
+diff --git a/CarRentailAPP/Login + AboutUs.swift b/CarRentailAPP/Models/Login + AboutUs.swift
+similarity index 100%
+rename from CarRentailAPP/Login + AboutUs.swift
+rename to CarRentailAPP/Models/Login + AboutUs.swift
+diff --git a/CarRentailAPP/Models/Model.swift b/CarRentailAPP/Models/Model.swift
+new file mode 100644
+index 0000000..cd81d68
+--- /dev/null
++++ b/CarRentailAPP/Models/Model.swift
+@@ -0,0 +1,43 @@
++//
++//  Model.swift
++//  CarRentailAPP
++//
++//  Created by Alisa Ts on 24.11.2021.
++//
++
++//struct Car {
++//    let carNames: String
++//    let price: String
++//    let horsesPower: String
++//    let driveUnits: String
++//    let transmission: String
++//    let engine: String
++//    
++//    var image: String {
++//        "\(carNames)"
++//    }
++//}
++//
++//extension Car {
++//    static func getCarList() -> [Car] {
++//        var cars: [Car] = []
++//        
++//        let carNames = DataManager.shared.cars
++//        let prices = DataManager.shared.prices
++//        let horsesPowers = DataManager.shared.horsesPower
++//        let drivesUnits = DataManager.shared.driveUnits
++//        let transmissions = DataManager.shared.transmissions
++//        let engines = DataManager.shared.engines
++//        
++//        for index in 0...14 {
++//            let car = Car(carNames: carNames[index],
++//                          price: prices[index],
++//                          horsesPower: horsesPowers[index],
++//                          driveUnits: drivesUnits[index],
++//                          transmission: transmissions[index],
++//                          engine: engines[index])
++//            cars.append(car)
++//        }
++//        return cars
++//    }
++//}
+diff --git a/CarRentailAPP/ReserveViewController.swift b/CarRentailAPP/ReserveViewController.swift
+deleted file mode 100644
+index c178032..0000000
+--- a/CarRentailAPP/ReserveViewController.swift
++++ /dev/null
+@@ -1,177 +0,0 @@
+-//
+-//  ReserveViewController.swift
+-//  CarRentailAPP
+-//
+-//  Created by Pavel Tsyganov on 24.11.2021.
+-//
+-
+-import UIKit
+-
+-class ReserveViewController: UIViewController {
+-    
+-    @IBOutlet var carImage: UIImageView!
+-    @IBOutlet var carModel: UILabel!
+-    @IBOutlet var lastNameTF: UITextField!
+-    @IBOutlet var nameTF: UITextField!
+-    @IBOutlet var reserveDateFrom: UITextField!
+-    @IBOutlet var reserveDateBefore: UITextField!
+-    @IBOutlet var bottomConstraint: NSLayoutConstraint!
+-    
+-    let datePicker = UIDatePicker()
+-    
+-    private var login = Login(name: "", lastName: "", dateFrom: "", dateBefore: "")
+-    
+-    var car: Car!
+-    
+-    override func viewDidLoad() {
+-        super.viewDidLoad()
+-        
+-        carImage.image = UIImage(named: car.carNames)
+-        carModel.text = String(car.carNames)
+-        
+-        nameTF.text = String(login.name)
+-        lastNameTF.text = String(login.lastName)
+-        reserveDateFrom.text = String(login.dateFrom)
+-        reserveDateBefore.text = String(login.dateBefore)
+-        nameTF.delegate = self
+-        lastNameTF.delegate = self
+-        reserveDateFrom.delegate = self
+-        reserveDateBefore.delegate = self
+-        
+-        lastNameTF.returnKeyType = .next
+-        nameTF.returnKeyType = .done
+-        nameTF.isEnabled = true
+-        nameTF.enablesReturnKeyAutomatically = true
+-        
+-        reserveDateFrom.inputView = datePicker
+-        reserveDateBefore.inputView = datePicker
+-        datePicker.preferredDatePickerStyle = .inline
+-        datePicker.backgroundColor = .white
+-        datePicker.datePickerMode = .date
+-        datePicker.locale = Locale.current
+-        datePicker.locale = Locale(identifier: "ru_RU")
+-        
+-        datePicker.addTarget(self, action: #selector(dataChanger), for: .valueChanged)
+-        
+-        let taoGensture = UITapGestureRecognizer(target: self, action: #selector(tapGenstureDone))
+-        taoGensture.cancelsTouchesInView = false
+-        self.view.addGestureRecognizer(taoGensture)
+-        
+-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+-    }
+-    
+-    @objc func keyboardWillShow(notification: Notification) {
+-        if let frame = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+-            let height = frame.cgRectValue.height
+-            UIView.animate(withDuration: 0.5, animations: {
+-                self.bottomConstraint.constant = height + 20
+-                self.view.layoutIfNeeded()
+-            })
+-        }
+-    }
+-    
+-    @objc func keyboardWillHide(notification: Notification) {
+-        if let frame = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+-            let height = frame.cgRectValue.height
+-            UIView.animate(withDuration: 0.5, animations: {
+-                self.bottomConstraint.constant = height - 240
+-                self.view.layoutIfNeeded()
+-            })
+-        }
+-    }
+-    
+-    @objc func tapGenstureDone() {
+-        self.view.endEditing(true)
+-    }
+-    
+-    @objc func dataChanger() {
+-        getDateFromPicker()
+-        view.endEditing(true)
+-    }
+-    
+-    func getDateFromPicker() {
+-        let formatter = DateFormatter()
+-        formatter.dateFormat = "dd.MM.yyyy"
+-        
+-        if reserveDateFrom.isFirstResponder {
+-            reserveDateFrom.text = formatter.string(from: datePicker.date)
+-        } else if reserveDateBefore.isFirstResponder {
+-            reserveDateBefore.text = formatter.string(from: datePicker.date)
+-        }
+-    }
+-    
+-    @IBAction func reserveCar() {
+-        guard let lastName = lastNameTF.text, !lastName.isEmpty,
+-              let name = nameTF.text, !name.isEmpty else {
+-                  showAlert(
+-                    title: "Вы не заполнили ФИО",
+-                    message: "Пожалуйста, введите Фамилию, Имя и Отчетство",
+-                    textField: lastNameTF)
+-                  return
+-              }
+-        
+-        if let _ = Int(lastName) {
+-            showAlert(
+-                title: "Неверный формат",
+-                message: "Пожалуйста, введите Фамилию, Имя и Отчетство буквами",
+-                textField: lastNameTF)
+-            nameTF.text = nil
+-        } else if let _ = Int(name) {
+-            showAlert(
+-                title: "Неверный формат",
+-                message: "Пожалуйста, введите Фамилию, Имя и Отчетство буквами",
+-                textField: nameTF)
+-            nameTF.text = nil
+-        }
+-        return
+-    }
+-    
+-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+-        guard let gratitudeVC = segue.destination as? GratitudeViewController else { return }
+-        gratitudeVC.login = login
+-        gratitudeVC.car = car
+-    }
+-}
+-
+-extension ReserveViewController {
+-    private func showAlert(title: String, message: String, textField: UITextField? = nil) {
+-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+-        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+-            textField?.text = ""
+-        }
+-        alert.addAction(okAction)
+-        present(alert, animated: true)
+-    }
+-}
+-
+-extension ReserveViewController: UITextFieldDelegate {
+-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+-        super.touchesBegan(touches, with: event)
+-        view.endEditing(true)
+-    }
+-    
+-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+-        if textField == lastNameTF {
+-            nameTF.becomeFirstResponder()
+-        } else {
+-            reserveCar()
+-            performSegue(withIdentifier: "showGratitudeVC", sender: nil)
+-        }
+-        return true
+-    }
+-    
+-    func textFieldDidEndEditing(_ textField: UITextField) {
+-        guard let newValue = textField.text else { return }
+-        
+-        if textField == nameTF {
+-            login.name = newValue
+-        } else if textField == lastNameTF {
+-            login.lastName = newValue
+-        } else if textField == reserveDateFrom {
+-            login.dateFrom = newValue
+-        } else {
+-            login.dateBefore = newValue
+-        }
+-    }
+-}
+diff --git a/CarRentailAPP/Services/NetworkManager.swift b/CarRentailAPP/Services/NetworkManager.swift
+new file mode 100644
+index 0000000..4cc217e
+--- /dev/null
++++ b/CarRentailAPP/Services/NetworkManager.swift
+@@ -0,0 +1,34 @@
++//
++//  DataManager.swift
++//  CarRentailAPP
++//
++//  Created by Alisa Ts on 24.11.2021.
++//
++
++import Foundation
++
++class NetworkManager {
++    static let shared = NetworkManager()
++    
++    private init() {}
++    
++    func fetchCars(from url: String?, completion: @escaping (_ car: [Car]) -> Void) {
++            guard let url = URL(string: url ?? "") else { return }
++            
++        URLSession.shared.dataTask(with: url) { data, response, error in
++                guard let data = data else {
++                    print(error?.localizedDescription ?? "No error description")
++                    return
++                }
++                do {
++                    let cars = try JSONDecoder().decode([Car].self, from: data)
++                    DispatchQueue.main.async {
++                        completion(cars)
++                    }
++                } catch let error {
++                    print(error.localizedDescription)
++                }
++            
++            }.resume()
++        }
++}
+diff --git a/CarRentailAPP/PTSStoryboard.storyboard b/CarRentailAPP/Storyboards/PTSStoryboard.storyboard
+similarity index 100%
+rename from CarRentailAPP/PTSStoryboard.storyboard
+rename to CarRentailAPP/Storyboards/PTSStoryboard.storyboard
+diff --git a/CarRentailAPP/WelcomeStoryboard.storyboard b/CarRentailAPP/Storyboards/WelcomeStoryboard.storyboard
+similarity index 85%
+rename from CarRentailAPP/WelcomeStoryboard.storyboard
+rename to CarRentailAPP/Storyboards/WelcomeStoryboard.storyboard
+index 86965ac..7620843 100644
+--- a/CarRentailAPP/WelcomeStoryboard.storyboard
++++ b/CarRentailAPP/Storyboards/WelcomeStoryboard.storyboard
+@@ -51,6 +51,7 @@
+                                     </userDefinedRuntimeAttribute>
+                                 </userDefinedRuntimeAttributes>
+                                 <connections>
++                                    <action selector="btn" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Arm-Dp-FtQ"/>
+                                     <segue destination="Lbi-st-Brj" kind="presentation" modalPresentationStyle="fullScreen" id="2Zl-nf-zX6"/>
+                                 </connections>
+                             </button>
+@@ -92,14 +93,41 @@
+                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                         <prototypes>
+-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="rental" id="T7P-N4-Hbl">
+-                                <rect key="frame" x="0.0" y="44.5" width="375" height="43.5"/>
++                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="rental" id="T7P-N4-Hbl" customClass="CarCell" customModule="CarRentailAPP" customModuleProvider="target">
++                                <rect key="frame" x="0.0" y="44.5" width="375" height="75.5"/>
+                                 <autoresizingMask key="autoresizingMask"/>
+                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T7P-N4-Hbl" id="2hl-2q-FJX">
+-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
++                                    <rect key="frame" x="0.0" y="0.0" width="375" height="75.5"/>
+                                     <autoresizingMask key="autoresizingMask"/>
++                                    <subviews>
++                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mKa-WS-x8y" customClass="Car">
++                                            <rect key="frame" x="0.0" y="0.0" width="375" height="75.5"/>
++                                            <subviews>
++                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NzG-LO-sBs">
++                                                    <rect key="frame" x="0.0" y="0.5" width="103" height="75"/>
++                                                    <constraints>
++                                                        <constraint firstAttribute="width" secondItem="NzG-LO-sBs" secondAttribute="height" multiplier="103:75" id="3Ug-Qq-703"/>
++                                                    </constraints>
++                                                </imageView>
++                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylf-eK-cmi">
++                                                    <rect key="frame" x="113" y="27.5" width="262" height="20.5"/>
++                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
++                                                    <nil key="textColor"/>
++                                                    <nil key="highlightedColor"/>
++                                                </label>
++                                            </subviews>
++                                        </stackView>
++                                    </subviews>
++                                    <constraints>
++                                        <constraint firstAttribute="trailing" secondItem="mKa-WS-x8y" secondAttribute="trailing" id="DIA-LK-iqf"/>
++                                        <constraint firstItem="mKa-WS-x8y" firstAttribute="top" secondItem="2hl-2q-FJX" secondAttribute="top" id="hiL-Zm-1Zr"/>
++                                        <constraint firstAttribute="bottom" secondItem="mKa-WS-x8y" secondAttribute="bottom" id="kPx-CP-Jjw"/>
++                                        <constraint firstItem="mKa-WS-x8y" firstAttribute="leading" secondItem="2hl-2q-FJX" secondAttribute="leading" id="tzb-wH-910"/>
++                                    </constraints>
+                                 </tableViewCellContentView>
+                                 <connections>
++                                    <outlet property="carImage" destination="NzG-LO-sBs" id="AoM-ND-BcG"/>
++                                    <outlet property="carName" destination="ylf-eK-cmi" id="saH-Cg-Uym"/>
+                                     <segue destination="2rH-1d-9UE" kind="show" identifier="rental" id="fx0-W7-5PM"/>
+                                 </connections>
+                             </tableViewCell>
+@@ -113,7 +141,7 @@
+                 </tableViewController>
+                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5P-PM-Iz6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+             </objects>
+-            <point key="canvasLocation" x="1748" y="80"/>
++            <point key="canvasLocation" x="1748" y="79.610194902548727"/>
+         </scene>
+         <!--Detail Car View Controller-->
+         <scene sceneID="CqF-NS-Xgn">
+diff --git a/CarRentailAPP/AppDelegate.swift b/CarRentailAPP/Supports/AppDelegate.swift
+similarity index 100%
+rename from CarRentailAPP/AppDelegate.swift
+rename to CarRentailAPP/Supports/AppDelegate.swift
+diff --git a/CarRentailAPP/SceneDelegate.swift b/CarRentailAPP/Supports/SceneDelegate.swift
+similarity index 100%
+rename from CarRentailAPP/SceneDelegate.swift
+rename to CarRentailAPP/Supports/SceneDelegate.swift
+diff --git a/CarRentailAPP/AboutUsViewController.swift b/CarRentailAPP/ViewControllers/AboutUsViewController.swift
+similarity index 100%
+rename from CarRentailAPP/AboutUsViewController.swift
+rename to CarRentailAPP/ViewControllers/AboutUsViewController.swift
+diff --git a/CarRentailAPP/CarListViewController.swift b/CarRentailAPP/ViewControllers/CarListViewController.swift
+similarity index 72%
+rename from CarRentailAPP/CarListViewController.swift
+rename to CarRentailAPP/ViewControllers/CarListViewController.swift
+index 2326a96..6dfc39d 100644
+--- a/CarRentailAPP/CarListViewController.swift
++++ b/CarRentailAPP/ViewControllers/CarListViewController.swift
+@@ -9,7 +9,7 @@ import UIKit
+ 
+ class CarListViewController: UITableViewController {
+ 
+-    private var carList = Car.getCarList()
++    private var cars: [Car] = []
+     private var filterCars = [Car]()
+     private let searchController = UISearchController(searchResultsController: nil)
+     private var searchBarIsEmpty: Bool {
+@@ -22,13 +22,15 @@ class CarListViewController: UITableViewController {
+     
+     override func viewDidLoad() {
+         super.viewDidLoad()
+-        tableView.rowHeight = 80
++        tableView.rowHeight = 100
+         
+         searchController.searchResultsUpdater = self
+         searchController.obscuresBackgroundDuringPresentation = false
+         searchController.searchBar.placeholder = "Поиск"
+         navigationItem.searchController = searchController
+         definesPresentationContext = true
++        
++        fetchData(from: Link.carLink.rawValue)
+     }
+ 
+     // MARK: - Table view data source
+@@ -37,26 +39,20 @@ class CarListViewController: UITableViewController {
+         if isFiltering {
+             return filterCars.count
+         }
+-        return carList.count
++        return cars.count
+     }
+ 
+     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+-        let cell = tableView.dequeueReusableCell(withIdentifier: "rental", for: indexPath)
++        let cell = tableView.dequeueReusableCell(withIdentifier: "rental", for: indexPath) as! CarCell
+         
+         var car: Car
+         if isFiltering {
+             car = filterCars[indexPath.row]
+         } else {
+-            car = carList[indexPath.row]
++            car = cars[indexPath.row]
+         }
+-        
+-        var content = cell.defaultContentConfiguration()
+-        content.text = car.carNames
+-        content.secondaryText = " Цена \(car.price) в сутки"
+-        content.image = UIImage(named: car.carNames)
+-        content.imageProperties.maximumSize = CGSize(width: 100, height: 100)
+-        
+-        cell.contentConfiguration = content
++
++        cell.configure(with: car)
+ 
+         return cell
+     }
+@@ -64,7 +60,6 @@ class CarListViewController: UITableViewController {
+     // MARK: - Navigation
+ 
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+-        guard let detailVC = segue.destination as? DetailCarViewController else { return }
+         guard let indexPath = tableView.indexPathForSelectedRow else { return }
+         
+         let car: Car
+@@ -72,9 +67,15 @@ class CarListViewController: UITableViewController {
+         if isFiltering {
+             car = filterCars[indexPath.row]
+         } else {
+-            car = carList[indexPath.row]
++            car = cars[indexPath.row]
++        }
++    }
++    
++    private func fetchData(from url: String?) {
++        NetworkManager.shared.fetchCars(from: url) { car in
++            self.cars = car
++            self.tableView.reloadData()
+         }
+-        detailVC.car = car
+     }
+ }
+ extension CarListViewController: UISearchResultsUpdating {
+@@ -83,10 +84,12 @@ extension CarListViewController: UISearchResultsUpdating {
+     }
+     
+     private func filterContentForSearchText(_ searchText: String) {
+-        filterCars = carList.filter({ (car: Car) -> Bool in
+-            return car.carNames.lowercased().contains(searchText.lowercased())
++        filterCars = cars.filter({ (car: Car) -> Bool in
++            return car.name?.lowercased().contains(searchText.lowercased()) ?? true
+         })
+         
+         tableView.reloadData()
+     }
+ }
++
++
+diff --git a/CarRentailAPP/ViewControllers/DetailCarViewController.swift b/CarRentailAPP/ViewControllers/DetailCarViewController.swift
+new file mode 100644
+index 0000000..22e061b
+--- /dev/null
++++ b/CarRentailAPP/ViewControllers/DetailCarViewController.swift
+@@ -0,0 +1,38 @@
++//
++//  DetailCarViewController.swift
++//  CarRentailAPP
++//
++//  Created by Alisa Ts on 24.11.2021.
++//
++
++//import UIKit
++//
++//class DetailCarViewController: UIViewController {
++//
++//    @IBOutlet var imageCar: UIImageView!
++//    @IBOutlet var carDescriptionLabel: UILabel!
++//    
++//    
++//    var car: Car!
++//    
++//    override func viewDidLoad() {
++//        super.viewDidLoad()
++//        imageCar.image = UIImage(named: car.image)
++//        carDescriptionLabel.text =
++//        """
++//            \(car.carNames) \n
++//            Данный автомобиль имеет \(car.driveUnits) привод.
++//            \(car.horsesPower) лошадиных сил.
++//            Двигатель \(car.engine) л.
++//            Коробка передач \(car.transmission) \n
++//            Цена: \(car.price) в сутки
++//        """
++//    }
++//    
++//    // MARK: - Navigation
++//
++//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
++//        guard let reserveVC = segue.destination as? ReserveViewController else { return }
++//        reserveVC.car = car
++//    }
++//}
+diff --git a/CarRentailAPP/ViewControllers/GratitudeViewController.swift b/CarRentailAPP/ViewControllers/GratitudeViewController.swift
+new file mode 100644
+index 0000000..8e186f5
+--- /dev/null
++++ b/CarRentailAPP/ViewControllers/GratitudeViewController.swift
+@@ -0,0 +1,35 @@
++////
++////  GratitudeViewController.swift
++////  CarRentailAPP
++////
++////  Created by Pavel Tsyganov on 24.11.2021.
++////
++//
++//import UIKit
++//
++//class GratitudeViewController: UIViewController {
++//    
++//    @IBOutlet var nameLabel: UILabel!
++//    @IBOutlet var dateFromLabel: UILabel!
++//    @IBOutlet var dateBeforeLabel: UILabel!
++//    @IBOutlet var gratitudeTF: UILabel!
++//    @IBOutlet var backgroundImage: UIImageView!
++//    
++//    var login: Login!
++//    var car: Car!
++//    
++//    override func viewDidLoad() {
++//        super.viewDidLoad()
++//        backgroundImage.image = UIImage(named: "BMW X1")
++//        backgroundImage.alpha = 0.3
++//        nameLabel.text = "\(login.fullname), спасибо, что выбрали нашу компанию!"
++//        dateFromLabel.text = "Бронь с \(login.dateFrom) - "
++//        dateBeforeLabel.text = "по \(login.dateBefore)!"
++//        gratitudeTF.text = String(car.carNames)
++//    }
++//
++//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
++//        guard let aboutUsVC = segue.destination as? AboutUsViewController else { return }
++//        aboutUsVC.login = login
++//    }
++//}
+diff --git a/CarRentailAPP/ViewControllers/ReserveViewController.swift b/CarRentailAPP/ViewControllers/ReserveViewController.swift
+new file mode 100644
+index 0000000..599fdea
+--- /dev/null
++++ b/CarRentailAPP/ViewControllers/ReserveViewController.swift
+@@ -0,0 +1,177 @@
++////
++////  ReserveViewController.swift
++////  CarRentailAPP
++////
++////  Created by Pavel Tsyganov on 24.11.2021.
++////
++//
++//import UIKit
++//
++//class ReserveViewController: UIViewController {
++//    
++//    @IBOutlet var carImage: UIImageView!
++//    @IBOutlet var carModel: UILabel!
++//    @IBOutlet var lastNameTF: UITextField!
++//    @IBOutlet var nameTF: UITextField!
++//    @IBOutlet var reserveDateFrom: UITextField!
++//    @IBOutlet var reserveDateBefore: UITextField!
++//    @IBOutlet var bottomConstraint: NSLayoutConstraint!
++//    
++//    let datePicker = UIDatePicker()
++//    
++//    private var login = Login(name: "", lastName: "", dateFrom: "", dateBefore: "")
++//    
++//    var car: Car!
++//    
++//    override func viewDidLoad() {
++//        super.viewDidLoad()
++//        
++//        carImage.image = UIImage(named: car.carNames)
++//        carModel.text = String(car.carNames)
++//        
++//        nameTF.text = String(login.name)
++//        lastNameTF.text = String(login.lastName)
++//        reserveDateFrom.text = String(login.dateFrom)
++//        reserveDateBefore.text = String(login.dateBefore)
++//        nameTF.delegate = self
++//        lastNameTF.delegate = self
++//        reserveDateFrom.delegate = self
++//        reserveDateBefore.delegate = self
++//        
++//        lastNameTF.returnKeyType = .next
++//        nameTF.returnKeyType = .done
++//        nameTF.isEnabled = true
++//        nameTF.enablesReturnKeyAutomatically = true
++//        
++//        reserveDateFrom.inputView = datePicker
++//        reserveDateBefore.inputView = datePicker
++//        datePicker.preferredDatePickerStyle = .inline
++//        datePicker.backgroundColor = .white
++//        datePicker.datePickerMode = .date
++//        datePicker.locale = Locale.current
++//        datePicker.locale = Locale(identifier: "ru_RU")
++//        
++//        datePicker.addTarget(self, action: #selector(dataChanger), for: .valueChanged)
++//        
++//        let taoGensture = UITapGestureRecognizer(target: self, action: #selector(tapGenstureDone))
++//        taoGensture.cancelsTouchesInView = false
++//        self.view.addGestureRecognizer(taoGensture)
++//        
++//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
++//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
++//    }
++//    
++//    @objc func keyboardWillShow(notification: Notification) {
++//        if let frame = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
++//            let height = frame.cgRectValue.height
++//            UIView.animate(withDuration: 0.5, animations: {
++//                self.bottomConstraint.constant = height + 20
++//                self.view.layoutIfNeeded()
++//            })
++//        }
++//    }
++//    
++//    @objc func keyboardWillHide(notification: Notification) {
++//        if let frame = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
++//            let height = frame.cgRectValue.height
++//            UIView.animate(withDuration: 0.5, animations: {
++//                self.bottomConstraint.constant = height - 240
++//                self.view.layoutIfNeeded()
++//            })
++//        }
++//    }
++//    
++//    @objc func tapGenstureDone() {
++//        self.view.endEditing(true)
++//    }
++//    
++//    @objc func dataChanger() {
++//        getDateFromPicker()
++//        view.endEditing(true)
++//    }
++//    
++//    func getDateFromPicker() {
++//        let formatter = DateFormatter()
++//        formatter.dateFormat = "dd.MM.yyyy"
++//        
++//        if reserveDateFrom.isFirstResponder {
++//            reserveDateFrom.text = formatter.string(from: datePicker.date)
++//        } else if reserveDateBefore.isFirstResponder {
++//            reserveDateBefore.text = formatter.string(from: datePicker.date)
++//        }
++//    }
++//    
++//    @IBAction func reserveCar() {
++//        guard let lastName = lastNameTF.text, !lastName.isEmpty,
++//              let name = nameTF.text, !name.isEmpty else {
++//                  showAlert(
++//                    title: "Вы не заполнили ФИО",
++//                    message: "Пожалуйста, введите Фамилию, Имя и Отчетство",
++//                    textField: lastNameTF)
++//                  return
++//              }
++//        
++//        if let _ = Int(lastName) {
++//            showAlert(
++//                title: "Неверный формат",
++//                message: "Пожалуйста, введите Фамилию, Имя и Отчетство буквами",
++//                textField: lastNameTF)
++//            nameTF.text = nil
++//        } else if let _ = Int(name) {
++//            showAlert(
++//                title: "Неверный формат",
++//                message: "Пожалуйста, введите Фамилию, Имя и Отчетство буквами",
++//                textField: nameTF)
++//            nameTF.text = nil
++//        }
++//        return
++//    }
++//    
++//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
++//        guard let gratitudeVC = segue.destination as? GratitudeViewController else { return }
++//        gratitudeVC.login = login
++//        gratitudeVC.car = car
++//    }
++//}
++//
++//extension ReserveViewController {
++//    private func showAlert(title: String, message: String, textField: UITextField? = nil) {
++//        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
++//        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
++//            textField?.text = ""
++//        }
++//        alert.addAction(okAction)
++//        present(alert, animated: true)
++//    }
++//}
++//
++//extension ReserveViewController: UITextFieldDelegate {
++//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
++//        super.touchesBegan(touches, with: event)
++//        view.endEditing(true)
++//    }
++//    
++//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
++//        if textField == lastNameTF {
++//            nameTF.becomeFirstResponder()
++//        } else {
++//            reserveCar()
++//            performSegue(withIdentifier: "showGratitudeVC", sender: nil)
++//        }
++//        return true
++//    }
++//    
++//    func textFieldDidEndEditing(_ textField: UITextField) {
++//        guard let newValue = textField.text else { return }
++//        
++//        if textField == nameTF {
++//            login.name = newValue
++//        } else if textField == lastNameTF {
++//            login.lastName = newValue
++//        } else if textField == reserveDateFrom {
++//            login.dateFrom = newValue
++//        } else {
++//            login.dateBefore = newValue
++//        }
++//    }
++//}
+diff --git a/CarRentailAPP/WelcomeViewController.swift b/CarRentailAPP/ViewControllers/WelcomeViewController.swift
+similarity index 74%
+rename from CarRentailAPP/WelcomeViewController.swift
+rename to CarRentailAPP/ViewControllers/WelcomeViewController.swift
+index 202c891..4f11a4e 100644
+--- a/CarRentailAPP/WelcomeViewController.swift
++++ b/CarRentailAPP/ViewControllers/WelcomeViewController.swift
+@@ -8,12 +8,11 @@
+ import UIKit
+ 
+ class WelcomeViewController: UIViewController {
+-
++    
++    private var cars: [Car] = []
+     @IBOutlet var headerImage: UIImageView!
+     @IBOutlet var textLabel: UILabel!
+     
+-    private var carsList = Car.getCarList()
+-    
+     override func viewDidLoad() {
+         super.viewDidLoad()
+         headerImage.image = UIImage(named: "BMW X1")
+@@ -24,7 +23,19 @@ class WelcomeViewController: UIViewController {
+             Бронируйте прямо в приложении
+         """
+     }
++    
++    @IBAction func btn() {
++        fetchData(from: Link.carLink.rawValue)
++    }
++    
+     @IBAction func unwind(for Segue: UIStoryboardSegue) {
+         
+     }
++    
++    private func fetchData(from url: String?) {
++        NetworkManager.shared.fetchCars(from: url) { car in
++            self.cars = car
++        }
++    }
++    
+ }
